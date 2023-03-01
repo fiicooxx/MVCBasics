@@ -1,4 +1,5 @@
 ﻿using GameStore.Data;
+using GameStore.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GameStore.Controllers
@@ -14,8 +15,8 @@ namespace GameStore.Controllers
 
         public IActionResult Index()
         {
-            var objCategoryList = _appDbContext.Categories.ToList();
-            return View();
+            IEnumerable<Category> objCategoryList = _appDbContext.Categories;
+            return View(objCategoryList);
         }
     }
 }
