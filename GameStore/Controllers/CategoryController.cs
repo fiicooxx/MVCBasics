@@ -24,5 +24,15 @@ namespace GameStore.Controllers
         {
             return View();
         }
+
+        //POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Category category)
+        {
+            _appDbContext.Categories.Add(category);
+            _appDbContext.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
