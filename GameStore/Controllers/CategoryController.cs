@@ -18,5 +18,11 @@ namespace GameStore.Controllers
             IEnumerable<Category> objCategoryList = _appDbContext.Categories;
             return View(objCategoryList);
         }
+
+        //GET
+        public IActionResult Create()
+        {
+            return View();
+        }
     }
 }
