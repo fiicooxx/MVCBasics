@@ -68,7 +68,7 @@ namespace GameStore.Controllers
             }
             if (ModelState.IsValid)
             {
-                _appDbContext.Categories.Add(category);
+                _appDbContext.Categories.Update(category);
                 _appDbContext.SaveChanges();
                 return RedirectToAction("Index");
             }
