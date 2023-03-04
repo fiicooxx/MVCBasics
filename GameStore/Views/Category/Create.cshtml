@@ -5,6 +5,8 @@
         <div class="row pb-2">
             <h2 class="text-primary">Create</h2>
         </div>
+        @*Display the required validations at the top of the table*@
+        <div asp-validation-summary="All"></div>
         <div class="mb-3">
             <label asp-for="Name"></label>
             <input asp-for="Name" class="form-control">
