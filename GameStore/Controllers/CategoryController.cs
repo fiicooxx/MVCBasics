@@ -74,5 +74,30 @@ namespace GameStore.Controllers
             }
             return View(category);
         }
+
+        //GET
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id == 0) return NotFound();
+
+            var categoryFromDb = _appDbContext.Categories.Find(id);        
+
+            if (categoryFromDb == null) return NotFound();
+
+            return View(categoryFromDb);
+        }
+
+        //POST
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeletePost(int? id)
+        {
+            var category = _appDbContext.Categories.Find(id);
+            if (category == null) return NotFound();
+            
+            _appDbContext.Categories.Remove(category);
+            _appDbContext.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
