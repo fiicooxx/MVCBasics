@@ -30,9 +30,13 @@ namespace GameStore.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Category category)
         {
-            _appDbContext.Categories.Add(category);
-            _appDbContext.SaveChanges();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                _appDbContext.Categories.Add(category);
+                _appDbContext.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(category);
         }
     }
 }
