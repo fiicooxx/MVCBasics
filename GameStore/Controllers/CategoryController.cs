@@ -38,6 +38,7 @@ namespace GameStore.Controllers
             {
                 _appDbContext.Categories.Add(category);
                 _appDbContext.SaveChanges();
+                TempData["success"] = "Category created successfully!";
                 return RedirectToAction("Index");
             }
             return View(category);
@@ -70,6 +71,7 @@ namespace GameStore.Controllers
             {
                 _appDbContext.Categories.Update(category);
                 _appDbContext.SaveChanges();
+                TempData["success"] = "Category updated successfully!";
                 return RedirectToAction("Index");
             }
             return View(category);
@@ -96,6 +98,7 @@ namespace GameStore.Controllers
             if (category == null) return NotFound();
             
             _appDbContext.Categories.Remove(category);
+            TempData["success"] = "Category deleted successfully!";
             _appDbContext.SaveChanges();
             return RedirectToAction("Index");
         }
